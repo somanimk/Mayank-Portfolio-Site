@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React Project Setup Guide
 
-## Getting Started
+This guide will help you install and run the project on your local machine.
 
-First, run the development server:
+---
+
+## 🚀 Prerequisites
+
+Make sure Node.js is installed on your system.
+
+### ✅ Install Node.js (if not already installed):
+
+1. Visit the official website: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+2. Download and run the installer
+3. Follow the setup instructions
+4. Verify installation using:
+   ```bash
+   node -v
+   npm -v
+   ```
+
+---
+
+## 📁 How to Run This React Project
+
+### 1. Open the Project in VS Code
+
+- Right-click on the folder and select **"Open with Code"**
+
+### 2. Open the Integrated Terminal
+
+- Right-click on the project folder in the sidebar
+- Select **“Open in Integrated Terminal”**
+
+### 3. Install Dependencies
+
+Run the following command in terminal:
+
+```bash
+npm install
+```
+
+This will install all required packages and create a `node_modules` folder.
+
+### 4. Start the Development Server
+
+Once installation is done, run:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 5. Open the Project in Your Browser
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+After starting the server, a local URL like:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+http://localhost:5173/
+```
 
-## Learn More
+will appear in the terminal. Open that URL in your browser to view the project.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Folder Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+├── public/
+├── src/
+├── package.json
+├── vite.config.js
+├── .gitignore
+└── README.md
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✅ You're all set!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Happy coding 💻✨
