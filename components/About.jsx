@@ -28,7 +28,7 @@ const About = ({isDarkMode}) => {
         initial={{opacity: 0}}
         whileInView={{opacity: 1}}
         transition={{duration: 0.8}}
-        className='flex w-full flex-col lg:flex-row items-start gap-20 my-20'>
+        className='flex w-full flex-col lg:flex-row items-center lg:items-start gap-20 my-20'>
             <motion.div
             initial={{opacity: 0, scale: 0.9}}
             whileInView={{opacity: 1, scale: 1}}
@@ -41,7 +41,7 @@ const About = ({isDarkMode}) => {
             whileInView={{opacity: 1}}
             transition={{duration: 0.6, delay: 0.8}}
             className='flex-1'>
-                <p className='mb-10 max-w-2xl font-Ovo '
+                <p className='mb-10 max-w-2xl font-Ovo text-justify'
                 >  I am an experienced Frontend Developer with a strong background in building responsive and scalable web applications. Throughout my career, I’ve collaborated with startups and product-based companies, contributing to impactful projects and delivering user-centric solutions.</p>
 
                 <motion.ul
