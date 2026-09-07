@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,8 +13,8 @@ export default {
         darkTheme: '#11001F',
       },
       fontFamily: {
-        Outfit: ["Outfit", "sans-serif"],
-        Ovo: ["Ovo", "serif"]
+        Outfit: ["var(--font-outfit)", "sans-serif"],
+        Ovo: ["var(--font-ovo)", "serif"]
       },
       boxShadow: {
         'black' : '4px 4px 0 #000',
@@ -28,3 +28,5 @@ export default {
   darkMode: 'selector',
   plugins: [],
 };
+
+export default config;

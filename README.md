@@ -1,80 +1,37 @@
-# React Project Setup Guide
+# Mayank Somani — Software Engineering Portfolio
 
-This guide will help you install and run the project on your local machine.
+A responsive portfolio built with Next.js App Router, React, Tailwind CSS, and Motion. It presents software engineering ownership, selected professional contributions, deep frontend expertise, certification, and contact information. The positioning emphasizes architecture, performance, testing, and technical delivery, with backend experience scoped to the projects supported by the resume.
 
----
+## Development
 
-## 🚀 Prerequisites
+Use Node.js 20.9 or later and npm.
 
-Make sure Node.js is installed on your system.
-
-### ✅ Install Node.js (if not already installed):
-
-1. Visit the official website: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
-2. Download and run the installer
-3. Follow the setup instructions
-4. Verify installation using:
-   ```bash
-   node -v
-   npm -v
-   ```
-
----
-
-## 📁 How to Run This React Project
-
-### 1. Open the Project in VS Code
-
-- Right-click on the folder and select **"Open with Code"**
-
-### 2. Open the Integrated Terminal
-
-- Right-click on the project folder in the sidebar
-- Select **“Open in Integrated Terminal”**
-
-### 3. Install Dependencies
-
-Run the following command in terminal:
-
-```bash
-npm install
-```
-
-This will install all required packages and create a `node_modules` folder.
-
-### 4. Start the Development Server
-
-Once installation is done, run:
-
-```bash
+```sh
+npm ci
 npm run dev
 ```
 
-### 5. Open the Project in Your Browser
+Open the local URL printed by Next.js (normally http://localhost:3000).
 
-After starting the server, a local URL like:
-
-```
-http://localhost:5173/
-```
-
-will appear in the terminal. Open that URL in your browser to view the project.
-
----
-
-## 📦 Folder Structure
-
-```
-├── public/
-├── src/
-├── package.json
-├── vite.config.js
-├── .gitignore
-└── README.md
+```sh
+npm run lint
+npm run build
+npm start
 ```
 
----
+Outfit and Ovo are served locally through `next/font/local` using the same Latin font assets as the previous site. The production build does not need to download fonts.
 
-## ✅ You're all set!
+## Content and structure
 
-Happy coding 💻✨
+- `lib/portfolio.js`: profile links, navigation, employment, case studies, and expertise.
+- `components/`: page sections and shared section/tag components.
+- `app/page.js`: section order and theme preference handling.
+- `app/layout.js`: fonts, metadata, and theme initialization.
+- `app/globals.css`: shared styles and responsive/accessibility behavior.
+- `public/Mayank_Somani_Resume.pdf`: downloadable latest resume.
+
+Professional contributions are described from the resume without proprietary screenshots or code. The Claude Certified Architect – Foundations section includes the owner's Credly badge embed and public verification link. The embed loads from Credly after the page becomes interactive; the verification link remains available if the third-party script is blocked.
+
+The contact form uses the existing Web3Forms endpoint and public access key. Email and LinkedIn are available as direct alternatives. Test form states with mocked requests; do not send live inquiries during automated checks.
+
+Before publishing, run lint and the production build, check small mobile/tablet/desktop layouts in both themes, and verify navigation, keyboard access, resume download, and contact form states.

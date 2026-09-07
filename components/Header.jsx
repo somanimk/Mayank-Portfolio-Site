@@ -1,89 +1,46 @@
+import ActionIcon from "./ActionIcon";
 import { assets } from "@/assets/assets";
+import { profile } from "@/lib/portfolio";
 import Image from "next/image";
-import React, { useState } from "react";
 import { motion } from "motion/react";
+import { useState } from "react";
 
-const Header = () => {
-  const [wave, setWave] = useState(false);
-
-  const handleWave = () => {
-    setWave(true);
-    setTimeout(() => setWave(false), 1000);
-  };
+export default function Header() {
+  const [isWaving, setIsWaving] = useState(false);
 
   return (
-    <div className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4">
-      <motion.div
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-      >
-        <Image src={assets.profile_img} alt="" className="rounded-full w-32" />
+    <header id="top" className="mx-auto flex min-h-[min(850px,100svh)] max-w-5xl flex-col items-center justify-center gap-6 px-6 pb-16 pt-32 text-center sm:pt-36">
+      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <Image src={assets.profile_img} alt="Mayank Somani" priority sizes="112px" className="mx-auto w-28 rounded-full" />
+        <p className="mt-5 font-Ovo text-xl sm:text-2xl">
+          Hi, I’m Mayank Somani{" "}
+          <button
+            type="button"
+            aria-label="Wave hello"
+            onClick={() => setIsWaving(true)}
+            onAnimationEnd={() => setIsWaving(false)}
+            className={`inline-flex size-11 items-center justify-center rounded-full align-middle origin-[70%_70%] ${isWaving ? "animate-wave" : ""}`}
+          >
+            <span aria-hidden="true">👋</span>
+          </button>
+        </p>
       </motion.div>
-
-      <motion.h3
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo"
-      >
-        Hi! I'm Mayank Somani
-        <span
-          className={`inline-block cursor-pointer transition-transform duration-500 ${
-            wave ? "animate-wave" : ""
-          }`}
-          onClick={handleWave}
-        >
-          👋
-        </span>
-      </motion.h3>
-
-      <motion.h1
-        initial={{ y: -30, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="text-3xl sm:text-6xl lg:text-[66px] font-Ovo"
-      >
-        Frontend web developer based in India.
-      </motion.h1>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.7 }}
-        className="max-w-2xl mx-auto font-Ovo"
-      >
-        I am a frontend developer from Jaipur, India with 3 years of experience, 
-        having worked with startups, service-based, and product-based companies.
-        I specialize in building modern, responsive web applications using React.js,
-        Next.js, and Tailwind CSS.
-      </motion.p>
-
-      <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-        <motion.a
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          href="#contact"
-          className="px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2 dark:bg-transparent"
-        >
-          contact me{" "}
-          <Image src={assets.right_arrow_white} alt="" className="w-4" />
-        </motion.a>
-
-        <motion.a
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          href="/Mayank Somani Resume.png"
-          download
-          className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 bg-white dark:text-black"
-        >
-          my resume <Image src={assets.download_icon} alt="" className="w-4" />
-        </motion.a>
+      <p className="eyebrow !mb-0 text-base">Senior Software Engineer </p>
+      <h1 className="max-w-4xl font-Ovo text-[2.5rem] leading-[1.12] tracking-tight sm:text-6xl lg:text-[4.25rem]">
+        Software engineering.<br /><span className="text-pink-700 dark:text-pink-300">From interfaces to APIs.</span>
+      </h1>
+      <p className="max-w-2xl text-base leading-7 text-gray-600 dark:text-white/75 sm:text-lg sm:leading-8">
+        I build web products with deep expertise in React, TypeScript, and Next.js, complemented by Node.js, Express, and MongoDB experience on DevStalk. At Bounteous x Accolite, I own component architecture, data flows, performance, and technical delivery for Clari Align.
+      </p>
+      <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+        <a href="#experience" className="button-primary">View experience <ActionIcon /></a>
+        <a href={profile.resume} download className="button-secondary">Download resume <ActionIcon name="download" /></a>
       </div>
-    </div>
+      <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-white/75">
+        <a className="text-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a className="text-link" href={`mailto:${profile.email}`}>Email me <ActionIcon name="mail" className="ml-1" /></a>
+      </div>
+    </header>
   );
-};
-
-export default Header;
+}

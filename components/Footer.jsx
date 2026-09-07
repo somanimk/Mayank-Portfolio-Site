@@ -1,33 +1,15 @@
-import { assets } from '@/assets/assets'
-import Image from 'next/image'
-import React from 'react'
+import ActionIcon from "./ActionIcon";
+import { profile } from "@/lib/portfolio";
 
-const Footer = ({isDarkMode}) => {
-  return (
-    <div className='mt-20'>
-      <div className='text-center'>
-        <a href="#top">
-          <h1 className="text-4xl font-bold text-black dark:text-white">
-            Mayank<span className="text-pink-600">.</span>
-          </h1>
-        </a>
-
-        <div className='w-max flex items-center gap-2 mx-auto'>
-            <Image src={isDarkMode ? assets.mail_icon_dark : assets.mail_icon} alt='' className='w-6'/>
-            mayank06011999@gmail.com
-        </div>
-      </div>
-
-    <div className='text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6'>
-        <p>©1999MS. All rights reserved.</p>
-        <ul className='flex items-center gap-10 justify-center mt-4 sm:mt-0'>
-            <li><a target='_blank' href="https://github.com/somanimk">GitHub</a></li>
-            <li><a target='_blank' href="https://www.linkedin.com/in/mayanksomani/">LinkedIn</a></li>
-        </ul>
+export default function Footer() {
+  return <footer className="mx-auto mt-8 max-w-6xl border-t border-gray-200 px-6 py-8 dark:border-white/15">
+    <div className="flex flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
+      <div><a href="#top" className="text-2xl font-bold">Mayank<span className="text-pink-600 dark:text-pink-300">.</span></a><p className="mt-1 text-xs text-gray-500 dark:text-white/60">© {new Date().getFullYear()} Mayank Somani. All rights reserved.</p></div>
+      <ul className="flex flex-wrap justify-center gap-6 text-sm">
+        <li><a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a className="text-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a className="text-link" href={profile.resume} download>Resume <ActionIcon name="download" className="ml-1" /></a></li>
+      </ul>
     </div>
-
-    </div>
-  )
+  </footer>;
 }
-
-export default Footer

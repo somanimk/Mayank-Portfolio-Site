@@ -2,23 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  font-family: Outfit;
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+  body { @apply bg-white font-Outfit leading-7 text-gray-900 antialiased dark:bg-darkTheme dark:text-white; }
+  html.dark { color-scheme: dark; }
+  a, button { text-decoration: none; }
+  :focus-visible { outline: 2px solid #be185d; outline-offset: 5px; }
+  .dark :focus-visible { outline-color: #f9a8d4; }
+  ::selection { background: #fbcfe8; color: #500724; }
 }
+
+@layer components {
+  .section-shell { @apply mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-14 sm:px-8 sm:py-20; }
+  .section-heading { @apply mx-auto mb-10 max-w-3xl text-center sm:mb-12; }
+  .eyebrow { @apply mb-3 text-xs font-medium uppercase leading-5 tracking-[0.14em] text-pink-700 dark:text-pink-300; }
+  .section-title { @apply font-Ovo text-3xl leading-tight tracking-tight sm:text-4xl lg:text-5xl; }
+  .body-copy { @apply font-Outfit text-base leading-7 sm:text-lg sm:leading-8; }
+  .section-description { @apply mx-auto mt-5 max-w-2xl text-base leading-7 text-gray-600 dark:text-white/70 sm:text-lg sm:leading-8; }
+  .surface-card { @apply min-w-0 rounded-xl border border-gray-300 p-6 transition-colors hover:bg-lightHover dark:border-white/25 dark:hover:bg-darkHover/40 sm:p-8; }
+  .tag { @apply rounded-full border border-gray-200 bg-white/60 px-3 py-1 text-sm leading-6 text-gray-600 dark:border-white/15 dark:bg-white/5 dark:text-white/75; }
+  .button-primary { @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-black bg-black px-7 py-3 text-sm font-medium text-white transition-[background-color,border-color,box-shadow] duration-200 hover:border-pink-700 hover:bg-gray-800 hover:shadow-md dark:border-white/50 dark:bg-transparent dark:hover:bg-darkHover; }
+  .button-secondary { @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-gray-400 bg-white/60 px-7 py-3 text-sm font-medium transition-[background-color,border-color,box-shadow] duration-200 hover:border-pink-500 hover:bg-lightHover hover:shadow-sm dark:border-white/40 dark:bg-transparent dark:hover:bg-darkHover; }
+  .text-link { @apply rounded-sm no-underline transition-colors hover:text-pink-700 dark:hover:text-pink-300; }
+  .form-label { @apply mb-2 block text-sm font-medium; }
+  .form-input { @apply w-full min-w-0 rounded-lg border border-gray-400 bg-white/80 p-3 text-base placeholder:text-gray-500 dark:border-white/30 dark:bg-darkHover/30 dark:placeholder:text-white/45; }
+  .skip-link { @apply fixed left-4 top-3 z-[60] -translate-y-24 rounded-full bg-black px-5 py-3 text-white focus:translate-y-0; }
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: min(21rem, 90vw);
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  background: #fff1f2;
+  color: #111827;
+  border: 0;
+}
+.mobile-menu::backdrop { background: rgb(17 0 31 / 45%); backdrop-filter: blur(3px); }
+.dark .mobile-menu { background: #2a004a; color: white; }
 
 @keyframes wave {
-  0% { transform: rotate( 0.0deg) }
-  10% { transform: rotate(14.0deg) }
-  20% { transform: rotate(-8.0deg) }
-  30% { transform: rotate(14.0deg) }
-  40% { transform: rotate(-4.0deg) }
-  50% { transform: rotate(10.0deg) }
-  60% { transform: rotate( 0.0deg) }
-  100% { transform: rotate( 0.0deg) }
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
 }
 
-.animate-wave {
-  animation: wave 1s ease-in-out;
-  display: inline-block;
-  transform-origin: 70% 70%;
+.animate-wave { animation: wave 1s ease-in-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

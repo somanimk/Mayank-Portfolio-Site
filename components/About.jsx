@@ -1,90 +1,72 @@
-import { assets, infoList, toolsData } from '@/assets/assets'
-import Image from 'next/image'
-import React from 'react'
-import { motion } from "motion/react"
+import { assets } from "@/assets/assets";
+import Image from "next/image";
+import Section from "./Section";
 
-const About = ({isDarkMode}) => {
+const education = [
+  {
+    degree: "Master of Computer Applications",
+    abbreviation: "MCA",
+    institution: "Vellore Institute of Technology",
+    years: "2022–2024",
+  },
+  {
+    degree: "Bachelor of Computer Applications",
+    abbreviation: "BCA",
+    institution: "Maharishi Arvind Institute of Science and Management",
+    years: "2017–2020",
+  },
+];
+
+export default function About() {
   return (
-    <motion.div id='about' className='w-full px-[12%] py-10 scroll-mt-20'
-    initial={{opacity: 0}}
-    whileInView={{opacity: 1}}
-    transition={{duration: 1}}
-    >
-      <motion.h4 
-      initial={{opacity: 0, y: -20}}
-      whileInView={{opacity: 1, y: 0}}
-      transition={{duration: 0.5, delay: 0.3}}
-      className='text-center mb-2 text-lg font-Ovo'>
-        Introduction</motion.h4>
+    <Section id="about" eyebrow="About me" title="Product thinking. Engineering depth.">
+      <div className="grid items-start gap-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-12">
+        <Image
+          src={assets.user_image}
+          alt="Mayank Somani"
+          sizes="(min-width: 1024px) 280px, 256px"
+          className="mx-auto w-64 max-w-full rounded-3xl lg:w-full"
+        />
+        <div className="min-w-0">
+          <div className="space-y-5 font-Outfit text-lg leading-8 text-gray-700 dark:text-white/80 sm:text-xl sm:leading-9">
+            <p>
+              I’m a <strong className="font-semibold text-gray-900 dark:text-white">Senior Software Engineer</strong> with
+              deep frontend expertise, building products across enterprise collaboration,
+              healthcare SaaS, and education. My work spans shared deal plans,
+              permission-aware organization hierarchies, and multi-step prescription workflows.
+            </p>
+            <p>
+              I take features from design through implementation, testing, and delivery.
+              Alongside hands-on development, I define reusable components and state-management
+              patterns, investigate workflow defects, optimize data fetching, and guide engineers
+              through design and code reviews. My experience also includes API integration and
+              Node.js application development for DevStalk.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <motion.h2 
-      initial={{opacity: 0, y: -20}}
-      whileInView={{opacity: 1, y: 0}}
-      transition={{duration: 0.5, delay: 0.5}}
-      className='text-center text-5xl font-Ovo'>
-        About me</motion.h2>
-
-        <motion.div 
-        initial={{opacity: 0}}
-        whileInView={{opacity: 1}}
-        transition={{duration: 0.8}}
-        className='flex w-full flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-20 my-12'>
-            <motion.div
-            initial={{opacity: 0, scale: 0.9}}
-            whileInView={{opacity: 1, scale: 1}}
-            transition={{duration: 0.6}}
-            className='w-64 sm:w-80 rounded-3xl max-w-none'>
-                <Image src={assets.user_image} alt='user' className='w-full rounded-3xl'/>
-            </motion.div>
-            <motion.div 
-            initial={{opacity: 0}}
-            whileInView={{opacity: 1}}
-            transition={{duration: 0.6, delay: 0.8}}
-            className='flex-1'>
-                <p className='mb-10 max-w-2xl font-Ovo text-justify'
-                >  I am an experienced Frontend Developer with a strong background in building responsive and scalable web applications. Throughout my career, I’ve collaborated with startups and product-based companies, contributing to impactful projects and delivering user-centric solutions.</p>
-
-                <motion.ul
-                initial={{opacity: 0}}
-                whileInView={{opacity: 1}}
-                transition={{duration: 0.8, delay: 1}}
-                className='grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl'>
-                    {infoList.map(({icon, iconDark, title, description}, index)=>(
-                        <motion.li 
-                        whileHover={{scale: 1.05}}
-                        className='border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50'
-                         key={index}>
-                            <Image src={isDarkMode ? iconDark : icon} alt={title} className='w-7 mt-3'/>
-                            <h3 className='my-4 font-semibold text-gray-700 dark:text-white'>{title}</h3>
-                            <p className='text-gray-600 text-sm dark:text-white/80'>{description}</p>
-                        </motion.li>
-                    ))}
-                </motion.ul>
-
-                <motion.h4
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.3, duration: 0.5 }}
-                className='my-6 text-gray-700 font-Ovo dark:text-white/80'>Tools I use</motion.h4>
-
-                <motion.ul
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 0.6 }}
-                className='flex items-center gap-3 sm:gap-5'>
-                    {toolsData.map((tool, index)=>(
-                        <motion.li 
-                        whileHover={{ scale: 1.1 }}
-                        className='flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500'
-                         key={index}>
-                            <Image src={tool} alt='Tool' className='w-5 sm:w-7'/>
-                        </motion.li>
-                    ))}
-                </motion.ul>
-            </motion.div>
-        </motion.div>
-    </motion.div>
-  )
+      <div aria-labelledby="education-title" className="mt-10 rounded-2xl border border-pink-200 bg-lightHover p-5 dark:border-pink-300/25 dark:bg-darkHover/40 sm:mt-12 sm:p-8">
+        <h3 id="education-title" className="mb-6 font-Outfit text-2xl font-semibold text-gray-900 dark:text-white">
+          Education
+        </h3>
+        <ul className="grid gap-5 md:grid-cols-2">
+          {education.map(({ degree, abbreviation, institution, years }) => (
+            <li key={abbreviation} className="min-w-0 rounded-xl border border-gray-200 bg-white/80 p-5 dark:border-white/15 dark:bg-darkTheme/60 sm:p-6">
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                <span className="rounded-full bg-pink-100 px-3 py-1 text-sm font-semibold text-pink-800 dark:bg-pink-300/10 dark:text-pink-300">
+                  {abbreviation}
+                </span>
+                <span className="text-base text-gray-600 dark:text-white/70">{years}</span>
+              </div>
+              <h4 className="text-lg font-semibold leading-7 sm:text-xl">{degree}</h4>
+              <p className="mt-2 text-base leading-7 text-gray-600 dark:text-white/75 sm:text-lg sm:leading-8">
+                {institution}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
+  );
 }
-
-export default About
