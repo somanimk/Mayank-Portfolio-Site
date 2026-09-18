@@ -15,6 +15,23 @@ export default function SocialLinks({ footer = false }) {
   const pointerType = useRef(null);
 
   useEffect(() => {
+    const element = container.current;
+    if (footer || !active || !element) return;
+    const card = element.querySelector(".social-preview");
+    if (!card) return;
+    const measure = () => {
+      element.style.setProperty("--preview-space", `${Math.ceil(card.getBoundingClientRect().height) + 12}px`);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(card);
+    return () => {
+      observer.disconnect();
+      element.style.removeProperty("--preview-space");
+    };
+  }, [active, footer]);
+
+  useEffect(() => {
     const dismiss = event => {
       if (!container.current?.contains(event.target)) setActive(null);
     };
@@ -44,7 +61,7 @@ export default function SocialLinks({ footer = false }) {
   return (
     <div
       ref={container}
-      className="relative flex items-center justify-center gap-6 text-sm text-gray-600 dark:text-white/75"
+      className={`relative flex items-center justify-center gap-6 text-sm text-gray-600 dark:text-white/75 ${footer ? "" : "social-links-hero"}`}
       onPointerDownCapture={event => { pointerType.current = event.pointerType; }}
       onPointerLeave={event => { if (event.pointerType === "mouse") setActive(null); }}
       onBlur={event => {

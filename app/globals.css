@@ -33,6 +33,10 @@
   .skip-link { @apply fixed left-4 top-3 z-[60] -translate-y-24 rounded-full bg-black px-5 py-3 text-white focus:translate-y-0; }
 }
 
+@media (max-width: 639px) {
+  .social-links-hero { margin-bottom: var(--preview-space, 0px); }
+}
+
 .mobile-menu {
   position: fixed;
   inset: 0 0 0 auto;
