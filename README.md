@@ -23,6 +23,10 @@ Outfit and Ovo are served locally through `next/font/local` using the same Latin
 
 ## Content and structure
 
+The hero's GitHub hover card loads the public GitHub user API through `/api/social/github`, including the avatar, bio, location, repository count, and followers. Server responses are cached for an hour; local profile details remain available if an API request fails.
+
+The LinkedIn card uses `/api/social/linkedin`. To enable it, authorize your own LinkedIn developer app with the Sign In with LinkedIn using OpenID Connect product and `openid profile` scopes, then set `LINKEDIN_ACCESS_TOKEN` in `.env.local` and restart the development server (or set it in the hosting environment). Keep this token server-side; do not use a `NEXT_PUBLIC_` variable. Replace the token when it expires. LinkedIn's userinfo endpoint provides the name and profile picture; the headline and description remain portfolio content. Without the token, the card uses the local profile. See [LinkedIn's documentation](https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2).
+
 - `lib/portfolio.js`: profile links, navigation, employment, case studies, and expertise.
 - `components/`: page sections and shared section/tag components.
 - `app/page.js`: section order and theme preference handling.

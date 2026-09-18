@@ -1,6 +1,5 @@
 import ActionIcon from "./ActionIcon";
 import { useRef, useState } from "react";
-import { profile } from "@/lib/portfolio";
 import Section from "./Section";
 
 export default function Contact() {
@@ -40,10 +39,6 @@ export default function Contact() {
   return <div className="bg-[url('/footer-bg-color.png')] bg-[length:90%_auto] bg-center bg-no-repeat dark:bg-none">
     <Section id="contact" eyebrow="Let’s connect" title="Building a product that needs engineering depth?" description="Let’s connect to build scalable web products that turn complex engineering challenges into simple, reliable user experiences.">
       <div className="mx-auto max-w-2xl">
-        <div className="mb-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
-          <a className="text-link break-all" href={`mailto:${profile.email}`}>{profile.email}</a>
-          <a className="text-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
         <form onSubmit={onSubmit} aria-busy={status === "sending"}>
           <div className="mb-5 grid gap-5 sm:grid-cols-2">
             <div><label className="form-label" htmlFor="contact-name">Name</label><input id="contact-name" name="name" autoComplete="name" required maxLength={120} className="form-input" placeholder="Your name" /></div>

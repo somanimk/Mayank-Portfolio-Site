@@ -1,4 +1,5 @@
 import ActionIcon from "./ActionIcon";
+import SocialLinks from "./SocialLinks";
 import { assets } from "@/assets/assets";
 import { profile } from "@/lib/portfolio";
 import Image from "next/image";
@@ -36,11 +37,7 @@ export default function Header() {
         <a href="#experience" className="button-primary">View experience <ActionIcon /></a>
         <a href={profile.resume} download className="button-secondary">Download resume <ActionIcon name="download" /></a>
       </div>
-      <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-white/75">
-        <a className="text-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a className="text-link" href={`mailto:${profile.email}`}>Email me <ActionIcon name="mail" className="ml-1" /></a>
-      </div>
+      <SocialLinks />
     </header>
   );
 }
