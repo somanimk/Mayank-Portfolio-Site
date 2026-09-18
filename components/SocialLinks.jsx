@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 import { profile } from "@/lib/portfolio";
@@ -11,6 +11,16 @@ export default function SocialLinks({ footer = false }) {
   const [active, setActive] = useState(null);
   const [profiles, setProfiles] = useState({});
   const [loading, setLoading] = useState(true);
+  const container = useRef(null);
+  const pointerType = useRef(null);
+
+  useEffect(() => {
+    const dismiss = event => {
+      if (!container.current?.contains(event.target)) setActive(null);
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -33,8 +43,10 @@ export default function SocialLinks({ footer = false }) {
 
   return (
     <div
+      ref={container}
       className="relative flex items-center justify-center gap-6 text-sm text-gray-600 dark:text-white/75"
-      onMouseLeave={() => setActive(null)}
+      onPointerDownCapture={event => { pointerType.current = event.pointerType; }}
+      onPointerLeave={event => { if (event.pointerType === "mouse") setActive(null); }}
       onBlur={event => {
         if (!event.currentTarget.contains(event.relatedTarget)) setActive(null);
       }}
@@ -46,14 +58,23 @@ export default function SocialLinks({ footer = false }) {
       }}
     >
       {(footer ? ["GitHub", "LinkedIn"] : ["LinkedIn", "GitHub"]).map(site => (
-        <a key={site} className="text-link" href={profile[site.toLowerCase()]} target="_blank" rel="noopener noreferrer" onMouseEnter={() => setActive(site)} onFocus={() => setActive(site)}>
+        <a key={site} className="text-link" href={profile[site.toLowerCase()]} target="_blank" rel="noopener noreferrer"
+          onPointerEnter={event => { if (event.pointerType === "mouse") setActive(site); }}
+          onFocus={() => setActive(site)}
+          onClick={event => {
+            if (event.detail !== 0 && (pointerType.current === "touch" || pointerType.current === "pen")) {
+              event.preventDefault();
+              setActive(site);
+            }
+          }}
+        >
           {site}
         </a>
       ))}
       {footer ? (
         <a className="text-link" href={profile.resume} download onMouseEnter={() => setActive(null)} onFocus={() => setActive(null)}>Resume <ActionIcon name="download" className="ml-1" /></a>
       ) : (
-        <EmailButton open={active === "email"} onOpen={() => setActive("email")} onToggle={() => setActive(active === "email" ? null : "email")} />
+        <EmailButton open={active === "email"} onOpen={() => setActive("email")} onToggle={() => setActive("email")} />
       )}
       {(active === "LinkedIn" || active === "GitHub") && (
         <div className={`social-preview text-left ${footer ? "social-preview-footer" : ""}`} aria-label={`${active} profile preview`}>

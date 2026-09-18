@@ -18,7 +18,7 @@ export default function EmailButton({ open, onOpen, onToggle }) {
 
   return (
     <>
-      <button type="button" className="text-link inline-flex items-center" aria-expanded={open} aria-controls="email-card" onMouseEnter={onOpen} onFocus={onOpen} onClick={onToggle}>
+      <button type="button" className="text-link inline-flex items-center" aria-expanded={open} aria-controls="email-card" onPointerEnter={event => { if (event.pointerType === "mouse") onOpen(); }} onFocus={onOpen} onClick={onToggle}>
         Email me <ActionIcon name="mail" className="ml-1" />
       </button>
       {open && <div id="email-card" className="social-preview" aria-label="Email options">
