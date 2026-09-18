@@ -47,7 +47,9 @@ export default function Contact() {
           <label className="form-label" htmlFor="contact-message">Message</label>
           <textarea id="contact-message" name="message" required maxLength={5000} rows={5} className="form-input" placeholder="Tell me about the role, team, or product." />
           <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden="true" />
-          <button type="submit" disabled={status === "sending"} className="button-primary mx-auto mt-6 disabled:cursor-wait disabled:opacity-60">{status === "sending" ? "Sending…" : "Send message"}<ActionIcon name="mail" /></button>
+          <div className="mt-6 flex justify-center">
+            <button type="submit" disabled={status === "sending"} className="button-primary disabled:cursor-wait disabled:opacity-60">{status === "sending" ? "Sending…" : "Send message"}<ActionIcon name="mail" /></button>
+          </div>
           <p role="status" aria-live="polite" aria-atomic="true" className={`mt-4 min-h-7 text-center text-sm ${status === "error" ? "text-red-700 dark:text-red-300" : "text-gray-600 dark:text-white/75"}`}>{message}</p>
         </form>
       </div>
