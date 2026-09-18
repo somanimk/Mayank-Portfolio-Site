@@ -14,16 +14,17 @@ export default function Header() {
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <Image src={assets.profile_img} alt="Mayank Somani" priority sizes="112px" className="mx-auto w-28 rounded-full" />
         <p className="mt-5 font-Ovo text-xl sm:text-2xl">
-          Hi, I’m Mayank Somani{" "}
+          Hi, I’m Mayank <span className="inline-flex items-center gap-2 whitespace-nowrap">Somani
           <button
             type="button"
             aria-label="Wave hello"
             onClick={() => setIsWaving(true)}
             onAnimationEnd={() => setIsWaving(false)}
-            className={`inline-flex size-11 items-center justify-center rounded-full align-middle origin-[70%_70%] ${isWaving ? "animate-wave" : ""}`}
+            className={`relative inline-flex size-7 shrink-0 items-center justify-center rounded-full origin-[70%_70%] before:absolute before:-inset-2 before:content-[''] ${isWaving ? "animate-wave" : ""}`}
           >
             <span aria-hidden="true">👋</span>
           </button>
+          </span>
         </p>
       </motion.div>
       <p className="eyebrow !mb-0 text-base">Senior Software Engineer </p>
