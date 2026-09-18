@@ -7,8 +7,8 @@
   body { @apply bg-white font-Outfit leading-7 text-gray-900 antialiased dark:bg-darkTheme dark:text-white; }
   html.dark { color-scheme: dark; }
   a, button { text-decoration: none; }
-  :focus-visible { outline: 2px solid #be185d; outline-offset: 5px; }
-  .dark :focus-visible { outline-color: #f9a8d4; }
+  :focus-visible { outline: 2px solid #6b7280; outline-offset: 5px; }
+  .dark :focus-visible { outline-color: #d1d5db; }
   ::selection { background: #fbcfe8; color: #500724; }
 }
 
@@ -21,8 +21,8 @@
   .section-description { @apply mx-auto mt-5 max-w-2xl text-base leading-7 text-gray-600 dark:text-white/70 sm:text-lg sm:leading-8; }
   .surface-card { @apply min-w-0 rounded-xl border border-gray-300 p-6 transition-colors hover:bg-lightHover dark:border-white/25 dark:hover:bg-darkHover/40 sm:p-8; }
   .tag { @apply rounded-full border border-gray-200 bg-white/60 px-3 py-1 text-sm leading-6 text-gray-600 dark:border-white/15 dark:bg-white/5 dark:text-white/75; }
-  .button-primary { @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-black bg-black px-7 py-3 text-sm font-medium text-white transition-[background-color,border-color,box-shadow] duration-200 hover:border-pink-700 hover:bg-gray-800 hover:shadow-md dark:border-white/50 dark:bg-transparent dark:hover:bg-darkHover; }
-  .button-secondary { @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-gray-400 bg-white/60 px-7 py-3 text-sm font-medium transition-[background-color,border-color,box-shadow] duration-200 hover:border-pink-500 hover:bg-lightHover hover:shadow-sm dark:border-white/40 dark:bg-transparent dark:hover:bg-darkHover; }
+  .button-primary { @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-black bg-black px-7 py-3 text-sm font-medium text-white transition-[background-color,border-color,box-shadow] duration-200 hover:border-gray-800 hover:bg-gray-800 hover:shadow-md dark:border-white/50 dark:bg-transparent dark:hover:bg-darkHover; }
+  .button-secondary { @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-gray-400 bg-white/60 px-7 py-3 text-sm font-medium transition-[background-color,border-color,box-shadow] duration-200 hover:border-gray-600 hover:bg-lightHover hover:shadow-sm dark:border-white/40 dark:bg-transparent dark:hover:bg-darkHover; }
   .text-link { @apply rounded-sm no-underline transition-colors hover:text-pink-700 dark:hover:text-pink-300; }
   .social-preview { @apply absolute left-1/2 top-full z-30 w-[min(20rem,calc(100vw-3rem))] -translate-x-1/2 rounded-2xl border border-gray-200 bg-white p-4 text-gray-900 shadow-xl dark:border-white/20 dark:bg-darkTheme dark:text-white; margin-top: 12px; }
   .social-preview::before { content: ""; position: absolute; left: 0; right: 0; top: -13px; height: 13px; }
