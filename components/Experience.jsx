@@ -1,4 +1,3 @@
-import ActionIcon from "./ActionIcon";
 import { assignments, earlierExperience } from "@/lib/portfolio";
 import Section, { Tags } from "./Section";
 
@@ -21,7 +20,6 @@ export default function Experience() {
               {assignment.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}
             </ul>
             <Tags items={assignment.tags} />
-            {assignment.name === "Clari Align" && <a href="#work" className="text-link mt-5 inline-block text-sm font-medium">Explore the feature case studies <ActionIcon /></a>}
           </div>)}
         </div>
       </article>
